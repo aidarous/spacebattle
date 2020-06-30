@@ -83,7 +83,6 @@ let decide = prompt("Press 1 to start game or 2 to quit");
                             }
                         
                         }
-                        // when USS attack hits and alien misses
                     } else{
                         alert("You missed!")
                     }
