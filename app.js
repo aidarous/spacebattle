@@ -16,13 +16,6 @@ let ussSchwarzenegger = {
     hull: 20,
     firepower: 5,
     accuracy: .7,
-    fire: function () {
-       let minDamageDealt = (Math.floor(3) * Math.random());
-       let maxDamageDealt = (Math.floor(9) * Math.random());
-       let damageDealt = Math.random() * (maxDamageDealt - minDamageDealt) +minDamageDealt;
-       damageDealt = Math.ceil(damageDealt);
-       console.log(`You dealt ${damageDealt} damage`);
-    }
 }
 
 
@@ -38,7 +31,7 @@ class AlienShip {
 }
 
 
-const alienShip = new AlienShip()
+let alienShip = new AlienShip()
 let chanceOfHitting;
 let remainingHull = alienShip["hull"] // created a variable for alien hull to use freely in code
 let ussHull = ussSchwarzenegger["hull"] // created to use the USS hull conveniently
@@ -53,7 +46,7 @@ let aliensToGo = 6
 // - create conditions for when USS attack misses and alien hits
 // - create conditions for when USS attack misses and alien misses
 
-//alert("Welcome to Spacebattle! Are you ready to save the universe?")
+alert("Welcome to Spacebattle! Are you ready to save the universe?")
 
 
 let decide = prompt("Press 1 to start game or 2 to quit");
@@ -65,7 +58,7 @@ let decide = prompt("Press 1 to start game or 2 to quit");
                 chanceOfHitting = Math.random()
                 console.log(chanceOfHitting)
                 let battleDecision = prompt("What will you do? Press 1 to attack or 2 to run away");
-                if(battleDecision == "1" && remainingHull >= 0){
+                if(battleDecision == "1" ){
                     // when USS attack hits and alien hits
                     if( ussSchwarzenegger["accuracy"] <= chanceOfHitting) {
                         
@@ -74,16 +67,22 @@ let decide = prompt("Press 1 to start game or 2 to quit");
                         if(remainingHull <= 0){
                             alert("Congratulations! You destroyed the alien ship")
                             alienShip = new AlienShip();
-                            alert("You have defeated Alien ship ")
-                            aliensToGo --;
+                            aliensToGo --
+                            if(aliensToGo > 0){
+                            alert("You have defeated Alien ship!\nAnother ship is coming...")
+                            
                             console.log(aliensToGo)
+                            }else{
+                                alert("You defeated the last alien ship")
+                            }
+                        
                         }
                         // when USS attack hits and alien misses
                     } else{
                         alert("You missed!")
                     }
                     
-                    if (alienShip["accuracy"] >= chanceOfHitting){
+                    if (alienShip["accuracy"] <= chanceOfHitting && remainingHull > 0){
 
                         alert("alien is going to attack")
                         ussHull -= alienShip["firepower"];
@@ -103,6 +102,6 @@ let decide = prompt("Press 1 to start game or 2 to quit");
         alert("You have quit the game")
         
         }
-if (remainingHull <= 0){
+if (aliensToGo == 0){
     alert("YOU WIN!") 
 }
