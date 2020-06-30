@@ -69,7 +69,13 @@ let decide = prompt("Press 1 to start game or 2 to quit");
                             alienShip = new AlienShip();
                             aliensToGo --
                             if(aliensToGo > 0){
-                            alert("You have defeated Alien ship!\nAnother ship is coming...")
+                            let continueFighting = prompt("You have defeated Alien ship!\nAnother ship is coming!\nPress 1 to continue or 2 retreat")
+                                if(continueFighting == "1"){
+                                    continue
+                                } else if(continueFighting == "2"){
+                                    alert("You ran away from battle\nGAME OVER")
+                                    break
+                                }
                             
                             console.log(aliensToGo)
                             }else{
@@ -97,8 +103,7 @@ let decide = prompt("Press 1 to start game or 2 to quit");
             
             
         }
-    }
-        else if (decide == 2){
+    } else if(decide == 2){
         alert("You have quit the game")
         
         }
