@@ -1,0 +1,25 @@
+body{
+    background: url("./assets/outer-space.jpg")no-repeat;
+}
+
+h1{
+    color: aliceblue;
+}
+h3{
+    color: aliceblue;
+}
+p{
+    color: aliceblue;
+}
+.game-display{
+    display: grid;
+}
+.hull-display{
+    display: flex;
+    justify-content: space-evenly;
+    border-color: aqua;
+    
+}
+#game-alert{
+    color: aliceblue;
+}
